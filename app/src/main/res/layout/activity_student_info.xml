@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentInfoActivity">
+
+    <TextView
+        android:id="@+id/tvNaslov"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Unesite predmet"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="12pt"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="27dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="210dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNaslov">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPredmet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Predmet" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnUpisi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Upiši"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
