@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private String sIme;
     private String sPrezime;
     private String sDatum;
+    private Student student = new Student();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +32,14 @@ public class MainActivity extends AppCompatActivity {
         oBtnDalje.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sIme = oInputIme.getText().toString();
-                sPrezime = oInputPrezime.getText().toString();
-                sDatum = oInputDatum.getText().toString();
+                student.ime = oInputIme.getText().toString();
+                student.prezime = oInputPrezime.getText().toString();
+                student.datum_rodenja = oInputDatum.getText().toString();
                 Intent oUpisiStudentIntent = new Intent(getApplicationContext(), StudentInfoActivity.class);
-                oUpisiStudentIntent.putExtra("ime", sIme);
-                oUpisiStudentIntent.putExtra("prezime", sPrezime);
-                oUpisiStudentIntent.putExtra("datum", sDatum);
+                oUpisiStudentIntent.putExtra("objStudent", student);
 
                 startActivity(oUpisiStudentIntent);
+                finish();
             }
         });
     }

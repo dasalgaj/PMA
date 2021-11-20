@@ -1,21 +1,19 @@
 package com.example.vjezba;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SummaryActivity extends AppCompatActivity {
 
-    private String sIme;
-    private String sPrezime;
-    private String sDatum;
-    private String sPredmet;
-    private String sProfesor;
-    private String sGodina;
-    private String sSatiPredavanja;
-    private String sSatiLV;
     private TextView oIme;
     private TextView oPrezime;
     private TextView oDatum;
@@ -25,51 +23,48 @@ public class SummaryActivity extends AppCompatActivity {
     private TextView oSatiPredavanja;
     private TextView oSatiLV;
     private Button oBtnVrati;
+    Student student = new Student();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
 
-        final Bundle oExtras = getIntent().getExtras();
+        student = (Student) getIntent().getSerializableExtra("objStudent");
 
-        sIme = oExtras.getString("ime");
         oIme = (TextView)findViewById(R.id.tvIme);
-        oIme.setText("Ime: " + sIme);
+        oIme.setText("Ime: " + student.ime);
 
-        sPrezime = oExtras.getString("prezime");
         oPrezime = (TextView)findViewById(R.id.tvPrezime);
-        oPrezime.setText("Prezime: " + sPrezime);
+        oPrezime.setText("Prezime: " + student.prezime);
 
-        sDatum = oExtras.getString("datum");
         oDatum = (TextView)findViewById(R.id.tvDatum);
-        oDatum.setText("Datum rođenja: " + sDatum);
+        oDatum.setText("Datum rođenja: " + student.datum_rodenja);
 
-        sPredmet = oExtras.getString("predmet");
         oPredmet = (TextView)findViewById(R.id.tvPredmet);
-        oPredmet.setText("Predmet: " + sPredmet);
+        oPredmet.setText("Predmet: " + student.predmet);
 
-        sProfesor = oExtras.getString("profesor");
         oProfesor = (TextView)findViewById(R.id.tvProfesor);
-        oProfesor.setText("Profesor: " + sProfesor);
+        oProfesor.setText("Profesor: " + student.profesor);
 
-        sGodina = oExtras.getString("godina");
         oGodina = (TextView)findViewById(R.id.tvGodina);
-        oGodina.setText("Akademska godina: " + sGodina);
+        oGodina.setText("Akademska godina: " + student.akademska_godina);
 
-        sSatiPredavanja = oExtras.getString("satiPredavanja");
         oSatiPredavanja = (TextView)findViewById(R.id.tvSatiPredavanja);
-        oSatiPredavanja.setText("Sati predavanja: " + sSatiPredavanja);
+        oSatiPredavanja.setText("Sati predavanja: " + student.sati_predavanja);
 
-        sSatiLV = oExtras.getString("satiLV");
         oSatiLV = (TextView)findViewById(R.id.tvSatiLV);
-        oSatiLV.setText("Sati LV: " + sSatiLV);
+        oSatiLV.setText("Sati LV: " + student.sati_LV);
+
 
         oBtnVrati = (Button)findViewById(R.id.btnVrati);
         oBtnVrati.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                moveTaskToBack(true);
+            public void onClick(View view) {
+                StudentList studentList = com.example.vjezba.StudentList.getInstance();
+                studentList.AddStudent(student);
+                finish();
+                //moveTaskToBack(true);
             }
         });
     }

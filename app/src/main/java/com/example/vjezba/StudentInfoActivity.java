@@ -13,29 +13,19 @@ import com.google.android.material.textfield.TextInputEditText;
 public class StudentInfoActivity extends AppCompatActivity {
 
     private Button oBtnUpisi;
-    private String sIme;
-    private String sPrezime;
-    private String sDatum;
-    private String sPredmet;
-    private String sProfesor;
-    private String sGodina;
-    private String sSatiPredavanja;
-    private String sSatiLV;
     private TextInputEditText oInputPredmet;
     private TextInputEditText oInputProfesor;
     private TextInputEditText oInputGodina;
     private TextInputEditText oInputSatiPredavanja;
     private TextInputEditText oInputSatiLV;
+    private Student student = new Student();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_info);
 
-        final Bundle oExtras = getIntent().getExtras();
-        sIme = oExtras.getString("ime");
-        sPrezime = oExtras.getString("prezime");
-        sDatum = oExtras.getString("datum");
+        student = (Student) getIntent().getSerializableExtra("objStudent");
 
         oInputPredmet = (TextInputEditText)findViewById(R.id.etPredmet);
         oInputProfesor = (TextInputEditText)findViewById(R.id.etProfesor);
@@ -47,22 +37,16 @@ public class StudentInfoActivity extends AppCompatActivity {
         oBtnUpisi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sPredmet = oInputPredmet.getText().toString();
-                sProfesor = oInputProfesor.getText().toString();
-                sGodina = oInputGodina.getText().toString();
-                sSatiPredavanja = oInputSatiPredavanja.getText().toString();
-                sSatiLV = oInputSatiLV.getText().toString();
+                student.predmet = oInputPredmet.getText().toString();
+                student.profesor = oInputProfesor.getText().toString();
+                student.akademska_godina = oInputGodina.getText().toString();
+                student.sati_predavanja = oInputSatiPredavanja.getText().toString();
+                student.sati_LV = oInputSatiLV.getText().toString();
                 Intent oUpisiPredmetIntent = new Intent(getApplicationContext(), SummaryActivity.class);
-                oUpisiPredmetIntent.putExtra("ime", sIme);
-                oUpisiPredmetIntent.putExtra("prezime", sPrezime);
-                oUpisiPredmetIntent.putExtra("datum", sDatum);
-                oUpisiPredmetIntent.putExtra("predmet", sPredmet);
-                oUpisiPredmetIntent.putExtra("profesor", sProfesor);
-                oUpisiPredmetIntent.putExtra("godina", sGodina);
-                oUpisiPredmetIntent.putExtra("satiPredavanja", sSatiPredavanja);
-                oUpisiPredmetIntent.putExtra("satiLV", sSatiLV);
+                oUpisiPredmetIntent.putExtra("objStudent", student);
 
                 startActivity(oUpisiPredmetIntent);
+                finish();
             }
         });
     }
