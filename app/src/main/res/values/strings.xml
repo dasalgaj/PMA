@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PMA</string>
+    <string name="lbl_naslov">Dobrodošli na predmet Programiranje mobilnih aplikacija</string>
+    <string name="lbl_ime_prezime">Ime i prezime:</string>
+    <string name="lbl_predmet">Predmet:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
