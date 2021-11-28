@@ -2,7 +2,6 @@ package com.example.vjezba;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -14,18 +13,31 @@ public class MyStatePager extends FragmentStateAdapter {
         super(fragmentManager, lifecycle);
     }
 
+    public Student student = new Student();
+
     @NonNull
     @Override
     public Fragment createFragment(int position) {
 
-        switch(position){
-            case 0:
-                return new PersonalInfoFragment();
+        Fragment fragment;
+
+        switch (position)
+        {
             case 1:
-                return new StudentInfoFragment();
+                fragment = new StudentInfoFragment();
+                ((StudentInfoFragment)fragment).fragmentsListener = student;
+                break;
+            case 2:
+                fragment = new SummaryFragment();
+                ((SummaryFragment)fragment).fragmentsListener = student;
+                break;
             default:
-                return new SummaryFragment();
+                fragment = new PersonalInfoFragment();
+                ((PersonalInfoFragment)fragment).fragmentsListener = student;
+                break;
         }
+
+        return fragment;
     }
 
     @Override

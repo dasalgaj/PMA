@@ -44,7 +44,7 @@ public class StartActivity extends AppCompatActivity {
         oBtnDodaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent oDodajStudentaIntent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent oDodajStudentaIntent = new Intent(getApplicationContext(), CreateNewRecordActivity.class);
                 startActivity(oDodajStudentaIntent);
                 finish();
             }

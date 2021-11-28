@@ -30,8 +30,7 @@ import java.util.List;
 public class CreateNewRecordActivity extends AppCompatActivity {
 
     private ViewPager2 mViewPager;
-    private Button oBtnDalje;
-    private List<Fragment> arrayList = new ArrayList<>();
+    private MyStatePager adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +39,8 @@ public class CreateNewRecordActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager2)findViewById(R.id.viewPager);
 
-        arrayList.add(new PersonalInfoFragment());
-        arrayList.add(new StudentInfoFragment());
-        arrayList.add(new SummaryFragment());
+        adapter = new MyStatePager(getSupportFragmentManager(), getLifecycle());
 
-        MyStatePager mStatePager;
-        mStatePager = new MyStatePager(getSupportFragmentManager(), getLifecycle());
-
-        mViewPager.setAdapter(mStatePager);
+        mViewPager.setAdapter(adapter);
     }
 }

@@ -14,11 +14,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +26,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputEditText;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,14 +35,15 @@ import java.util.Date;
 
 public class PersonalInfoFragment extends Fragment {
 
-    private Student student = new Student();
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
     private TextInputEditText oInputIme;
     private TextInputEditText oInputPrezime;
     private TextInputEditText oInputDatum;
     private ImageView mImageView;
-    private Button oBtnDalje;
     private Button oBtnSlika;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    public FragmentsListener fragmentsListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,28 +54,60 @@ public class PersonalInfoFragment extends Fragment {
         oInputDatum = (TextInputEditText)view.findViewById(R.id.etDatum);
         mImageView = (ImageView)view.findViewById(R.id.imageView);
 
-        oBtnDalje = (Button)view.findViewById(R.id.btnDalje);
-
-        oBtnDalje.setOnClickListener(new View.OnClickListener() {
+        oInputIme.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                PersonalInfoFragment fragment1 = new PersonalInfoFragment();
-                StudentInfoFragment fragment2 = new StudentInfoFragment();
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                student.ime = oInputIme.getText().toString();
-                student.prezime = oInputPrezime.getText().toString();
-                student.datum_rodenja = oInputDatum.getText().toString();
+            }
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("objStudent", student);
-                fragment2.setArguments(bundle);
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+            }
 
-                ft.replace(R.id.container1, fragment2);
-                ft.addToBackStack(null);
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(fragmentsListener != null) {
+                    fragmentsListener.setIme(oInputIme.getText().toString());
+                }
+            }
+        });
 
-                ft.commit();
+        oInputPrezime.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(fragmentsListener != null) {
+                    fragmentsListener.setPrezime(oInputPrezime.getText().toString());
+                }
+            }
+        });
+
+        oInputDatum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(fragmentsListener != null) {
+                    fragmentsListener.setDatum(oInputDatum.getText().toString());
+                }
             }
         });
 
