@@ -1,7 +1,5 @@
 package com.example.vjezba;
 
-import static com.example.vjezba.PersonalInfoFragment.REQUEST_IMAGE_CAPTURE;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -20,6 +18,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.vjezba.MyStatePager;
+import com.example.vjezba.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.android.material.textfield.TextInputEditText;

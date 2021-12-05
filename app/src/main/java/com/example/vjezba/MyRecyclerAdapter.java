@@ -48,7 +48,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         {
             StudentViewHolder studHolder = (StudentViewHolder) holder;
             studHolder.txtImePrezime.setText(studenti.get(position).VratiImePrezime());
-            studHolder.txtPredmet.setText(studenti.get(position).VratiPredmet());
+            studHolder.txtPredmet.setText(studenti.get(position).predmet.title);
         }
     }
 

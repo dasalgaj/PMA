@@ -102,13 +102,13 @@ public class SummaryFragment extends Fragment {
                 oDatum.setText("Datum rođenja:");
             }
             if(fragmentsListener.getPredmet() != null) {
-                oPredmet.setText("Predmet: " + fragmentsListener.getPredmet());
+                oPredmet.setText("Predmet: " + fragmentsListener.getPredmet().title);
             }
             else{
                 oPredmet.setText("Predmet:");
             }
             if(fragmentsListener.getProfesor() != null) {
-                oProfesor.setText("Profesor: " + fragmentsListener.getProfesor());
+                oProfesor.setText("Profesor: " + fragmentsListener.getProfesor().name);
             }
             else{
                 oProfesor.setText("Profesor:");

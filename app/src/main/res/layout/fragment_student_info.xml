@@ -45,20 +45,12 @@
                 android:layout_marginLeft="16dp"
                 android:text="Predmet" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutPredmet"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <Spinner
+                android:id="@+id/spinnerTitle"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPredmet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="28dp"
-                    android:hint="Unesi ime predmeta" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginRight="25dp">
+            </Spinner>
         </LinearLayout>
 
         <View
@@ -81,20 +73,12 @@
                 android:layout_marginLeft="16dp"
                 android:text="Profesor" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutProfesor"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <Spinner
+                android:id="@+id/spinnerName"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etProfesor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="28dp"
-                    android:hint="Unesi ime profesora" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginRight="25dp">
+            </Spinner>
         </LinearLayout>
 
         <View

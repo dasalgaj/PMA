@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity implements Serializable {
 
     private RecyclerView mRecyclerView;
     private Button oBtnDodaj;
@@ -24,10 +24,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        Student student = new Student();
-        student.ime = "-";
-        student.prezime = "-";
-        student.predmet = "-";
+        Student student = (Student)getIntent().getSerializableExtra("objStudent");
+
         studenti.add(student);
 
         StudentList studentList = StudentList.getInstance();
